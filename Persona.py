@@ -67,8 +67,10 @@ class Administrador(Persona):
         cursor.execute("INSERT INTO productos (nombre, descripcion, precio, stock, idproveedor, idCategoria) VALUES (%s, %s, %s, %s, %s, %s)", (self.nombre, self.descripcion, self.precio, self.stock, self.idproveedor, self.idCategoria))
         self.conn.commit()
 
+
+        print("-" * 60)
         print(f"El Producto {self.nombre} se agregó exitosamente.")
-            
+        print("-" * 60)
     
     def eliminarProd():
         pass
