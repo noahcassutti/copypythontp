@@ -10,7 +10,7 @@ class Persona:
         self.fechaRegistro = fechaRegistro
         self.nombre = nombre
         self.direccion =direccion
-    
+        self.conn, self.cursor = connect() # con esto guarda la conexión y el cursor en el objeto
     
     def login():
         pass
@@ -18,8 +18,17 @@ class Persona:
     def loginOut():
         pass
     
-    def verProd():
-        pass
+    def verProd(self):
+        
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT * FROM productos")
+        resultado =cursor.fetchall()
+        contador=1
+        for prod in resultado:
+            datos="{0}. IDProducto {1} | Nombre: {2} | Precio: {3}"
+            print(datos.format(contador,prod[0],prod[1],prod[2],prod[3]))
+            contador = contador +1
+            print("")
     
     def eliminarUsuario():
         pass
