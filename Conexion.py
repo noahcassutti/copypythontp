@@ -5,7 +5,7 @@ def connect():
         host='localhost',
         database='tienda_virtual',
         user='root',
-        password='#aca va la clave'
+        password='_cindyAPC2005_1#'
     )
     cursor = conn.cursor()
     return conn, cursor
