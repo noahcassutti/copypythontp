@@ -1,3 +1,9 @@
-use tienda_virtual;
+USE tienda_virtual;
 
-Select * from categoria;
+select * from proveedores;
+select * from productos;
+select * from categoria;
+
+delete from provedores;
+
+        
