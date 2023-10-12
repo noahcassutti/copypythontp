@@ -9,7 +9,7 @@ class Persona:
         self.password = password
         self.fechaRegistro = fechaRegistro
         self.nombre = nombre
-        self.direccion =direccion
+        self.direccion = direccion
     
     
     def login():
@@ -56,13 +56,15 @@ class Administrador(Persona):
         
         self.nombre = input('Ingrese nombre del producto: ')
         self.descripcion = input('Ingrese la descripción del producto: ')
-        self.precio = input('Ingrese el precio del producto: ')
-        self.stock = input('Ingrese el stock del producto: ')
-        self.idCategoria = input('Ingrese la categoría del producto: ')
+        self.precio = float(input('Ingrese el precio del producto: '))
+        self.stock = int(input('Ingrese el stock del producto: '))
+        self.idproveedor = int(input("Ingrese el id del proveedor: "))
+        self.idCategoria = int(input('Ingrese la categoría del producto: '))
+        
 
         cursor = self.conn.cursor()
 
-        cursor.execute("INSERT INTO productos (nombre, descripcion, precio, stock, idCategoria) VALUES (%s, %s, %s, %s, %s)", (self.nombre, self.descripcion, self.precio, self.stock, self.idCategoria))
+        cursor.execute("INSERT INTO productos (nombre, descripcion, precio, stock, idproveedor, idCategoria) VALUES (%s, %s, %s, %s, %s, %s)", (self.nombre, self.descripcion, self.precio, self.stock, self.idproveedor, self.idCategoria))
         self.conn.commit()
 
         print(f"El Producto {self.nombre} se agregó exitosamente.")
