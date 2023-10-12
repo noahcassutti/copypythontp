@@ -16,4 +16,3 @@ if __name__ == '__main__':
     mi_admi.cargarProd() 
 
 
-
