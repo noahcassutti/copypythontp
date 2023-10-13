@@ -20,12 +20,15 @@ class Persona:
     
     def verProd(self):
         
+        print("--------NUESTROS PRODUCTOS----------")
+            
         cursor = self.conn.cursor()
         cursor.execute("SELECT * FROM productos")
         resultado =cursor.fetchall()
+        self.conn.commit()
         contador=1
         for prod in resultado:
-            datos="{0}. IDProducto {1} | Nombre: {2} | Precio: {3}"
+            datos="{0}. IDProducto {1} | Nombre: {2} | Precio: {4}"
             print(datos.format(contador,prod[0],prod[1],prod[2],prod[3]))
             contador = contador +1
             print("")
