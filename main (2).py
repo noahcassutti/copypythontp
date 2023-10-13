@@ -32,11 +32,14 @@ while True:
         mi_admi.cargarProd() 
 
     elif opcion ==  2:
-        pass
+        mi_admi.eliminarProd()
+        
     elif opcion == 3:
-        pass
+        mi_admi.modificarProd()
+        
     elif opcion == 4:
-        pass
+        mi_admi.verProd()
+        
     elif opcion == 5:
         print("-" * 60)
         print("Hasta luiego! :)")

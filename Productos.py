@@ -53,32 +53,10 @@ def get_idproveedor(self):
 
 def set_idproveedor(self, idproveedor):
        self.idproveedor = idproveedor
+  
 
-# def ver_productos(self):
-#         return self.productos
-
-# def agregar_producto(self, producto):
-#         self.productos.append(producto)
-
-# def comprar_producto(self, indice):
-#         if 0 <= indice < len(self.productos):
-#             if self.productos[indice].stock > 0:
-#                 self.productos[indice].stock -= 1
-#                 return f"Has comprado {self.productos[indice].nombre}"
-#             else:
-#                 return f"Producto {self.productos[indice].nombre} sin stock"
-#         else:
-#             return "Índice de producto fuera de rango"
-
-# def eliminar_producto(self, indice):
-#         if 0 <= indice < len(self.productos):
-#             del self.productos[indice]
-#         else:
-#             print("producto eliminado")
-   
-    #toString(metodo) 
 def __str__(self):
-        # función para mostrar la información 
+        
         return f"Nombre: {self.nombre}\nDescripción: {self.descripcion}\nPrecio: {self.precio}\nStock: {self.stock}\nCategoría: {self.idCategoria}\nUsuarios: {', '.join(self.usuarios)}"
 
 

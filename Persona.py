@@ -18,6 +18,22 @@ class Persona:
     def loginOut():
         pass
     
+    def verProd():
+        pass
+
+    
+
+class Usuarios(Persona):
+    def __init__(self, idUsuario, email, password, fechaRegistro, nombre, direccion):
+        super().__init__(idUsuario, email, password, fechaRegistro, nombre, direccion)
+
+
+class Administrador(Persona):
+    def __init__(self, idUsuario, email, password, fechaRegistro, nombre, direccion):
+        super().__init__(idUsuario, email, password, fechaRegistro, nombre, direccion)
+        self.conn, self.cursor = connect() # con esto guarda la conexión y el cursor en el objeto
+        
+        
     def verProd(self):
         
         print("--------NUESTROS PRODUCTOS----------")
@@ -31,28 +47,8 @@ class Persona:
             datos="{0}. IDProducto {1} | Nombre: {2} | Precio: {4}"
             print(datos.format(contador,prod[0],prod[1],prod[2],prod[3]))
             contador = contador +1
-            print("")
-    
-    def eliminarUsuario():
-        pass
-    
-    def registrarUsuario():
-        pass
-    
-
-
-# aca gregue fecha registro, nombre y direccion ya que esta haciendo herencia por ende hereda lo de la clase padre
-# y ademas llame a super que se utiliza para llamar a la clase base
-
-class Usuarios(Persona):
-    def __init__(self, idUsuario, email, password, fechaRegistro, nombre, direccion):
-        super().__init__(idUsuario, email, password, fechaRegistro, nombre, direccion)
-
-
-class Administrador(Persona):
-    def __init__(self, idUsuario, email, password, fechaRegistro, nombre, direccion):
-        super().__init__(idUsuario, email, password, fechaRegistro, nombre, direccion)
-        self.conn, self.cursor = connect() # con esto guarda la conexión y el cursor en el objeto
+            print("")    
+        
         
     def cargarProd(self):
     
@@ -75,11 +71,63 @@ class Administrador(Persona):
         print(f"El Producto {self.nombre} se agregó exitosamente.")
         print("-" * 60)
     
-    def eliminarProd():
-        pass
     
-    def modificarProd():
-        pass
+    def eliminarProd(self):
+         print("--------ELIMINAR PRODUCTO----------")
+         
+         cursor = self.conn.cursor()         
+
+         cursor.execute("SELECT idproducto, nombre FROM productos")
+         productos = cursor.fetchall()
+         
+         print("Elige un producto para eliminar:")
+         for i, producto in enumerate(productos):
+             print(f"{i+1}. {producto[1]}")
+         
+         seleccion = int(input("Ingrese el número del producto que desea eliminar: "))
+         producto_a_eliminar = productos[seleccion-1]
+         
+         sql = "DELETE FROM productos WHERE idproducto = %s"
+         val = (producto_a_eliminar[0], )
+                 
+         cursor.execute(sql, val)
+         self.conn.commit()
+         print(f"El producto {producto_a_eliminar[1]} ha sido eliminado.")    
+        
+    
+    def modificarProd(self):
+        print("--------ACTUALIZAR PRODUCTO----------")
+        
+        cursor = self.conn.cursor()         
+
+        cursor.execute("SELECT idproducto, nombre FROM productos")
+        productos = cursor.fetchall()
+         
+        print("Elige un producto para actualizar:")
+        for i, producto in enumerate(productos):
+             print(f"{i+1}. {producto[1]}")
+         
+        seleccion = int(input("Ingrese el id del producto que desea actualizar: "))
+        
+        nuevo_nombre = input("Ingrese el nuevo nombre del producto: ")
+        nuevo_descr = input("Ingrese la nueva descripción del producto: ")
+        nuevo_precio = input("Ingrese el nuevo precio del producto: ")
+        nuevo_stock = input("Ingrese el nuevo stock del producto: ")
+        nuevo_idprove = input("Ingrese el nuevo ID del proveedor del producto: ")
+        nuevo_idcat = input("Ingrese el nuevo ID de la categoría del producto: ")
+
+        
+        producto_modificar = productos[seleccion-1]
+         
+        sql = "UPDATE productos SET nombre = %s, descripcion = %s, precio = %s, stock = %s, idproveedor = %s, idCategoria = %s WHERE idproducto = %s"
+
+        val = (nuevo_nombre, nuevo_descr, nuevo_precio, nuevo_stock, nuevo_idprove, nuevo_idcat, producto_modificar[0])
+                 
+        cursor.execute(sql, val)
+        self.conn.commit()
+        print(f"El producto {producto_modificar[1]} ha sido actualizado.")    
+    
+
 
 
 
