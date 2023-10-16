@@ -62,7 +62,6 @@ class Administrador(Persona):
         
         
     def cargarProd(self):
-    
         
         self.nombre = input('Ingrese nombre del producto: ')
         self.descripcion = input('Ingrese la descripción del producto: ')

@@ -18,7 +18,7 @@ def menu():
     print("BIENVENIDO AL SISTEMA")
     print("-" * 60)
     print("OPCION 1 - Cargar productos")
-    print("OPCION 2 -  Eliminar prodcutos")
+    print("OPCION 2 - Eliminar prodcutos")
     print("OPCION 3 - Actualizar productos")
     print("OPCION 4 - Mostrar productos")
     print("OPCION 5 - Salir del sistema")
@@ -42,7 +42,7 @@ while True:
         
     elif opcion == 5:
         print("-" * 60)
-        print("Hasta luiego! :)")
+        print("Hasta luego! :)")
         print("-" * 60)
         break
     

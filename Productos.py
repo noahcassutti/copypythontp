@@ -2,7 +2,7 @@ from Persona import *
 
 
 class Productos:
-    def __init__(self,idproducto, nombre, descripcion, precio, stock, idproveedor, idCategoria):
+    def __init__(self, idproducto, nombre, descripcion, precio, stock, idproveedor, idCategoria):
         self.idproducto = idproducto
         self.nombre = nombre
         self.descripcion = descripcion
